@@ -12,5 +12,11 @@ require(['jquery', 'MyApp'], function($, MyApp) {
     };
     console.dir(myFirstObject);
 
+    var ageGroup = {
+      30: "Children",
+      100: "Very Old"
+    };
+    console.log(ageGroup["30"]);
+
   });
 });
