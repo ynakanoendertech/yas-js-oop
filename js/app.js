@@ -6,37 +6,9 @@ require(['jquery', 'MyApp'], function($, MyApp) {
 
     var myApp = new MyApp();
 
-    console.log("--- Creating objects ---");
-
-    // Object literals
-
-    var myBooks = {};
-    console.dir(myBooks);
-
-    var mango = {
-      color: "yello",
-      shape: "round",
-      sweetness: 8,
-      howSweetAmI: function() {
-        console.log( this.sweetness );
-      }
-    };
-    console.dir(mango);
-    mango.howSweetAmI();
-
-    // Object constructor (use the 'new' keyword)
-
-    var orange = new Object();
-    orange.color = "orange";
-    orange.shape = "round";
-    orange.sweetness = 6;
-    orange.howSweetAmI = function() {
-      console.log( this.sweetness );
-    };
-    console.dir(orange);
-    orange.howSweetAmI();
-
     console.log("--- Practical patterns for creating objects ---");
+
+    // Unpractical - literal object creation with static member values
 
     var mangoFruit = {
       color: "yellow",
@@ -44,7 +16,7 @@ require(['jquery', 'MyApp'], function($, MyApp) {
       fruitName: "Mango",
       nativeToLand: ["South America", "Central America"],
       showName: function() {
-        console.log("This is " + this.fruitName);
+        console.log("This is a " + this.fruitName);
       },
       nativeTo: function() {
         this.nativeToLand.forEach(function(eachCountry) {
@@ -54,6 +26,27 @@ require(['jquery', 'MyApp'], function($, MyApp) {
     };
     mangoFruit.showName();
     mangoFruit.nativeTo();
+
+    // Constructor pattern for creating objects
+
+    function Fruit(theColor, theSweetness, theFuiteName, theNativeToLand) {
+      this.color = theColor;
+      this.sweetness = theSweetness;
+      this.fuiteName = theFuiteName;
+      this.nativeToLand = theNativeToLand;
+      this.showName = function() {
+        console.log("This is a " + this.fuiteName);
+      };
+      this.nativeTo = function() {
+        this.nativeToLand.forEach(function(eachCountry) {
+          console.log("Grown in: " + eachCountry);
+        });
+      };
+    }
+
+    var mangoFruite2 = new Fruit("Yellow", 8, "Mango", ["South America", "Central America", "West Africa"]);
+    mangoFruite2.showName();
+    mangoFruite2.nativeTo();
 
   });
 });
