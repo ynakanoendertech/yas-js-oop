@@ -8,7 +8,7 @@ require(['jquery', 'MyApp'], function($, MyApp) {
 
     console.log("--- Practical patterns for creating objects ---");
 
-    // Unpractical - literal object creation with static member values
+    console.log("- Unpractical - literal object creation with static member values");
 
     var mangoFruit = {
       color: "yellow",
@@ -27,7 +27,7 @@ require(['jquery', 'MyApp'], function($, MyApp) {
     mangoFruit.showName();
     mangoFruit.nativeTo();
 
-    // Constructor pattern for creating objects
+    console.log("- Constructor pattern for creating objects");
 
     function Fruit(theColor, theSweetness, theFuiteName, theNativeToLand) {
       this.color = theColor;
@@ -47,6 +47,25 @@ require(['jquery', 'MyApp'], function($, MyApp) {
     var mangoFruite2 = new Fruit("Yellow", 8, "Mango", ["South America", "Central America", "West Africa"]);
     mangoFruite2.showName();
     mangoFruite2.nativeTo();
+
+    console.log("- Prototype pattern for creating objects");
+
+    function Fruit2() {}
+
+    Fruit2.prototype.color = "Yellow";
+    Fruit2.prototype.sweetness = 7;
+    Fruit2.prototype.fruitName = "Generic Fruit";
+    Fruit2.prototype.nativeToLand = "USA";
+    Fruit2.prototype.showName = function() {
+      console.log("This is a " + this.fruitName);
+    };
+    Fruit2.prototype.nativeTo = function() {
+      console.log("Grown in: " + this.nativeToLand);
+    };
+
+    var mangoFruit3 = new Fruit2();
+    mangoFruit3.showName();
+    mangoFruit3.nativeTo();
 
   });
 });
