@@ -26,5 +26,19 @@ require(['jquery', 'MyApp'], function($, MyApp) {
       console.log( eachItem + " : " + school3[ eachItem ]);
     }
 
+    console.log("--- Accessing inherited properties ---");
+
+    function HigherLearning() {
+      this.educationLevel = "University";
+    }
+    var school4 = new HigherLearning();
+    school4.schoolName = "MIT";  // Implement inheritance with the HigherLearning constructor
+    school4.schoolAccredited = true;
+    school4.schoolLocation = "Massachusetts";
+
+    for (var eachItem in school4) {
+      console.log( eachItem + " : " + school4[ eachItem ]);
+    }
+
   });
 });
