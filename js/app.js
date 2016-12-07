@@ -36,5 +36,24 @@ require(['jquery', 'MyApp'], function($, MyApp) {
     console.dir(orange);
     orange.howSweetAmI();
 
+    console.log("--- Practical patterns for creating objects ---");
+
+    var mangoFruit = {
+      color: "yellow",
+      sweetness: 8,
+      fruitName: "Mango",
+      nativeToLand: ["South America", "Central America"],
+      showName: function() {
+        console.log("This is " + this.fruitName);
+      },
+      nativeTo: function() {
+        this.nativeToLand.forEach(function(eachCountry) {
+          console.log("Grown in: " + eachCountry);
+        })
+      }
+    };
+    mangoFruit.showName();
+    mangoFruit.nativeTo();
+
   });
 });
