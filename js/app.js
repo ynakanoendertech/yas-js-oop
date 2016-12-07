@@ -18,5 +18,13 @@ require(['jquery', 'MyApp'], function($, MyApp) {
     var school2 = { schoolName: "MIT" };
     console.log(school.hasOwnProperty("schoolName"));
     console.log(school.hasOwnProperty("toString"));  // the inherited 'toString' method is NOT an own property of school
+
+    console.log("--- Accessing and enumerating properties on objects ---");
+
+    var school3 = { schoolName: "MIT", schoolAccredited: true, schoolLocation: "Massachusetts" };
+    for (var eachItem in school3) {
+      console.log( eachItem + " : " + school3[ eachItem ]);
+    }
+
   });
 });
