@@ -16,6 +16,11 @@ define(['jquery', 'inheritPrototype', 'Question'], function($, inheritPrototype,
 
   inheritPrototype(DragDropQuestion, Question);
 
+  // Override method
+  DragDropQuestion.prototype.displayQuestion = function() {
+    return this.question;
+  };
+
   // Return constructor
   return DragDropQuestion;
 });
