@@ -17,6 +17,11 @@ define(['jquery', 'inheritPrototype', 'Question'], function($, inheritPrototype,
 
   inheritPrototype(MultipleChoiceQuestion, Question);
 
+  // Override method
+  MultipleChoiceQuestion.prototype.displayQuestion = function() {
+    return this.question + ": [" + this.choices.join(",") + "]";
+  };
+
   // Return constructor
   return MultipleChoiceQuestion;
 });

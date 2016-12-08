@@ -7,23 +7,16 @@ require(['jquery', 'User', 'Question', 'MultipleChoiceQuestion', 'DragDropQuesti
     var u = new User();
     console.dir(u);
 
-    console.log('---------------------------------------------');
+    var allQuestions = [
+      new Question("What is cat?", ["Satan", "God"], "God"),
+      new MultipleChoiceQuestion("What is cat?", ["Satan", "God"], "God"),
+      new DragDropQuestion("What is cat?", ["Satan", "God"], "God")
+    ];
 
-    var q = new Question("What is cat?", ["Satan", "God"], "God");
-    console.dir(q);
-    console.log(q.displayQuestion());
-
-    console.log('---------------------------------------------');
-
-    var mcq = new MultipleChoiceQuestion("What is cat?", ["Satan", "God"], "God");
-    console.dir(mcq);
-    console.log(mcq.displayQuestion());
-
-    console.log('---------------------------------------------');
-
-    var ddq = new DragDropQuestion("What is cat?", ["Satan", "God"], "God");
-    console.dir(ddq);
-    console.log(ddq.displayQuestion());
+    // Display all questions
+    allQuestions.forEach(function(eachQuestion) {
+      console.log(eachQuestion.displayQuestion());
+    });
 
   });
 });
