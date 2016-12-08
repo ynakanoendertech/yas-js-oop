@@ -6,16 +6,33 @@ require(['jquery', 'MyApp'], function($, MyApp) {
 
     var myApp = new MyApp();
 
-    console.log("--- All objects that inherit from another object also inherit a constructor property ---");
+    console.log("--- Prototype attribute of objects created with new Object() or object literal ---");
 
-    var myObj = new Object();
-    console.log(myObj.constructor);
+    var userAccount1 = new Object();
+    console.dir(userAccount1);
+
+    var userAccount2 = {
+      name: "Mike"
+    };
+    console.dir(userAccount2);
+    console.log(userAccount2.propertyIsEnumerable("name"));
+
+    console.log("--- Prototype attribute of objects created with a constructor function ---");
 
     function Account() {
-      this.name = "Account";
+      this.name = "Mike";
     }
-    var myAccount = new Account();
-    console.log(myAccount.constructor);
+    var userAccount3 = new Account();
+    console.dir(userAccount3);
+    console.log(userAccount3.propertyIsEnumerable("name"));
+
+    console.log("--- Prototype property is not enumerable ---");
+
+    function Account2() {}
+    Account2.prototype.name = "Bob";
+    var userAccount4 = new Account2();
+    console.dir(userAccount4);
+    console.log(userAccount4.propertyIsEnumerable("name"));
 
   });
 });
