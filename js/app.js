@@ -6,54 +6,48 @@ require(['jquery', 'MyApp'], function($, MyApp) {
 
     var myApp = new MyApp();
 
-    console.log("--- Prototype-based inheritance ---");
+    console.log("=== Accessing properties on objects with prototype chain ===");
 
-    // Plant
+    console.log("--- Object created with literal ---");
 
-    function Plant() {
-      this.country = "Mexico";
-      this.isOrganic = true;
+    var myFriends = { name: "Pete" };
+
+    console.log("- Resulted object structure");
+
+    console.dir(myFriends);
+
+    console.log("- Access own property")
+
+    console.log(myFriends.name);
+
+    console.log("- Access inherited property with prototype chain")
+
+    console.log("constructor(): " + myFriends.constructor());
+    console.log("hasOwnProperty(): " + myFriends.hasOwnProperty("name"));
+    console.log("isPrototypeOf(): " + myFriends.isPrototypeOf());
+    console.log("propertyIsEnumerable(): " + myFriends.propertyIsEnumerable("name"));
+    console.log("toLocaleString(): " + myFriends.toLocaleString());
+    console.log("toString(): " + myFriends.toString());
+    console.log("valueOf(): " + myFriends.valueOf());
+
+    console.log("--- Object created with constructor ---");
+
+    function People() {
+      this.superstar = "MJ";
     }
 
-    Plant.prototype.showNameAndColor = function() {
-      return "I am a " + this.name + " and my color is " + this.color;
-    };
+    People.prototype.athlete = "Tiger Woods";
 
-    Plant.prototype.amIOrganic = function() {
-      if (this.isOrganic) {
-        return "I am organic, Baby!";
-      } else {
-        return "I am NOT organic :(";
-      }
-    };
+    var famousPerson = new People();
+    famousPerson.superstar = "Steve Jobs";
 
-    // Fruit
+    console.log("- Resulted object structure");
 
-    function Fruit(fruitName, fruitColor) {
-      this.name = fruitName;
-      this.color = fruitColor;
-    }
+    console.dir(famousPerson);
 
-    // ==============================================
-    // Inherit Plant.prototype methods and properties
-    // ==============================================
-    Fruit.prototype = new Plant();
-
-    var aBanana = new Fruit("Banana", "Yellow");
-
-    console.log("- Inherited object structure");
-
-    console.dir(aBanana);
-    for (var i in aBanana) {
-      console.log(i);
-    }
-
-    console.log("- Using inherited methods and properties");
-
-    console.log(aBanana.name);
-    console.log(aBanana.color);
-    console.log(aBanana.showNameAndColor());
-    console.log(aBanana.amIOrganic());
+    console.log(famousPerson.superstar);
+    console.log(famousPerson.athlete);
+    console.log(famousPerson.toString());
 
   });
 });
