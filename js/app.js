@@ -6,20 +6,16 @@ require(['jquery', 'MyApp'], function($, MyApp) {
 
     var myApp = new MyApp();
 
-    console.log("--- Prototype property ---");
+    console.log("--- All objects that inherit from another object also inherit a constructor property ---");
 
-    function PrintStuff(myDocuments) {
-      this.documents = myDocuments;
+    var myObj = new Object();
+    console.log(myObj.constructor);
+
+    function Account() {
+      this.name = "Account";
     }
-
-    // Add 'print' method so that it is inheritable
-    PrintStuff.prototype.print = function() {
-      console.log(this.documents);
-    };
-
-    // Create a new object and inherit 'print' method from PrintStuff
-    var newObj = new PrintStuff("I am a new Object and I can print");
-    newObj.print();
+    var myAccount = new Account();
+    console.log(myAccount.constructor);
 
   });
 });
