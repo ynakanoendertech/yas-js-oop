@@ -6,33 +6,54 @@ require(['jquery', 'MyApp'], function($, MyApp) {
 
     var myApp = new MyApp();
 
-    console.log("--- Prototype attribute of objects created with new Object() or object literal ---");
+    console.log("--- Prototype-based inheritance ---");
 
-    var userAccount1 = new Object();
-    console.dir(userAccount1);
+    // Plant
 
-    var userAccount2 = {
-      name: "Mike"
-    };
-    console.dir(userAccount2);
-    console.log(userAccount2.propertyIsEnumerable("name"));
-
-    console.log("--- Prototype attribute of objects created with a constructor function ---");
-
-    function Account() {
-      this.name = "Mike";
+    function Plant() {
+      this.country = "Mexico";
+      this.isOrganic = true;
     }
-    var userAccount3 = new Account();
-    console.dir(userAccount3);
-    console.log(userAccount3.propertyIsEnumerable("name"));
 
-    console.log("--- Prototype property is not enumerable ---");
+    Plant.prototype.showNameAndColor = function() {
+      return "I am a " + this.name + " and my color is " + this.color;
+    };
 
-    function Account2() {}
-    Account2.prototype.name = "Bob";
-    var userAccount4 = new Account2();
-    console.dir(userAccount4);
-    console.log(userAccount4.propertyIsEnumerable("name"));
+    Plant.prototype.amIOrganic = function() {
+      if (this.isOrganic) {
+        return "I am organic, Baby!";
+      } else {
+        return "I am NOT organic :(";
+      }
+    };
+
+    // Fruit
+
+    function Fruit(fruitName, fruitColor) {
+      this.name = fruitName;
+      this.color = fruitColor;
+    }
+
+    // ==============================================
+    // Inherit Plant.prototype methods and properties
+    // ==============================================
+    Fruit.prototype = new Plant();
+
+    var aBanana = new Fruit("Banana", "Yellow");
+
+    console.log("- Inherited object structure");
+
+    console.dir(aBanana);
+    for (var i in aBanana) {
+      console.log(i);
+    }
+
+    console.log("- Using inherited methods and properties");
+
+    console.log(aBanana.name);
+    console.log(aBanana.color);
+    console.log(aBanana.showNameAndColor());
+    console.log(aBanana.amIOrganic());
 
   });
 });
