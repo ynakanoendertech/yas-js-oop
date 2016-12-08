@@ -1,12 +1,17 @@
 define(['jquery'], function($) {
   "use strict";
 
-  // Constructor
+  // User class
+  
   function User(theName, theEmail) {
-    this.name = theName;
-    this.email = theEmail;
-    this.quizScores = [];
-    this.currentStore = 0;
+    
+    // Preserve this
+    var self = this;
+
+    self.name = theName;
+    self.email = theEmail;
+    self.quizScores = [];
+    self.currentStore = 0;
   }
 
   User.prototype = {
@@ -24,5 +29,6 @@ define(['jquery'], function($) {
     }
   };
 
+  // Return constructor
   return User;
 });

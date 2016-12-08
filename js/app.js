@@ -1,20 +1,15 @@
 "use strict";
 
-require(['jquery', 'User'], function($, User) {
+require(['jquery', 'User', 'Question'], function($, User, Question) {
 
   $(document).ready(function() {
 
-    var firstUser = new User("Richard", "Richard@example.com");
-    firstUser.changeEmail("RichardB@example.com");
-    firstUser.saveScore(15);
-    firstUser.saveScore(10);
-    console.log(firstUser.email);
-    console.log(firstUser.showNameAndScores());
+    var u = new User();
+    console.dir(u);
 
-    var secondUser = new User("Peter", "Peter@example.com");
-    secondUser.saveScore(18);
-    console.log(secondUser.email);
-    console.log(secondUser.showNameAndScores());
+    var q = new Question("What is cat?", ["Satan", "God"], "God");
+    console.dir(q);
+    console.log(q.displayQuestion());
 
   });
 });
